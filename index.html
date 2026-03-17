@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tegelhandel Hengelo — Specialist in Tegels & Badkamers</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="site-wrapper">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Tegelhandel <strong>Hengelo</strong></span>
+      </div>
+
+      <!-- Desktop links -->
+      <ul class="navbar-links">
+        <li><button onclick="scrollToSection('home')">Home</button></li>
+        <li><button onclick="scrollToSection('over-ons')">Over Ons</button></li>
+        <li><button onclick="scrollToSection('diensten')">Diensten</button></li>
+        <li><button onclick="scrollToSection('projecten')">Projecten</button></li>
+        <li><button onclick="scrollToSection('contact')" class="nav-cta">Contact</button></li>
+      </ul>
+
+      <!-- Burger button -->
+      <button class="burger" id="burgerBtn" aria-label="Menu openen" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><button onclick="scrollToSection('home')">Home</button></li>
+        <li><button onclick="scrollToSection('over-ons')">Over Ons</button></li>
+        <li><button onclick="scrollToSection('diensten')">Diensten</button></li>
+        <li><button onclick="scrollToSection('projecten')">Projecten</button></li>
+        <li><button onclick="scrollToSection('contact')" class="mobile-cta">Contact</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="section hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Vakmanschap in Hengelo</p>
+      <h1 class="hero-title">Uw specialist in<br />tegels &amp; badkamers</h1>
+      <p class="hero-subtitle">
+        Van vloertegels tot complete badkamerrenovaties — wij leveren kwaliteit die generaties meegaat.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="scrollToSection('projecten')">Bekijk onze projecten</button>
+        <button class="btn btn-outline" onclick="scrollToSection('contact')">Neem contact op</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER ONS -->
+  <section id="over-ons" class="section over-ons-section">
+    <div class="container two-col">
+      <div class="col-image">
+        <img src="/Images/VakmanLegtTegels.jpg" alt="Vakman legt tegels" class="about-image" />
+        <div class="experience-badge">
+          <span class="exp-number">20+</span>
+          <span class="exp-label">Jaar<br />Ervaring</span>
+        </div>
+      </div>
+      <div class="col-text">
+        <p class="section-eyebrow">Over Ons</p>
+        <h2 class="section-title">Passie voor tegels,<br />trots op ons werk</h2>
+        <p class="section-body">
+          Tegelhandel Hengelo is al meer dan twintig jaar het adres voor tegels en badkamerrenovaties in de regio. Wij combineren traditioneel vakmanschap met moderne technieken en materialen.
+        </p>
+        <p class="section-body">
+          Of u nu een nieuwe badkamer wilt, een keuken wil ombouwen, of simpelweg nieuwe vloertegels zoekt — ons ervaren team staat voor u klaar van concept tot oplevering.
+        </p>
+        <ul class="check-list">
+          <li>✔ Eigen monteurs in loondienst</li>
+          <li>✔ Ruim assortiment in onze showroom</li>
+          <li>✔ Scherpe tarieven, eerlijk advies</li>
+          <li>✔ Na-service &amp; garantie op werkzaamheden</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIENSTEN -->
+  <section id="diensten" class="section diensten-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-eyebrow">Wat wij doen</p>
+        <h2 class="section-title">Onze Diensten</h2>
+        <p class="section-subtitle">Van vloer tot plafond — wij ontzorgen u volledig</p>
+      </div>
+      <div class="diensten-grid">
+        <div class="dienst-card">
+          <h3>Badkamerrenovatie</h3>
+          <p>Complete vervanging of opfrissing van uw badkamer. Van ontwerp tot oplevering.</p>
+        </div>
+        <div class="dienst-card">
+          <h3>Vloertegels</h3>
+          <p>Keramische, stenen en porselein vloertegels voor binnen en buiten. Groot assortiment.</p>
+        </div>
+        <div class="dienst-card">
+          <h3>Wandtegels</h3>
+          <p>Stijlvolle wandtegels voor keuken, badkamer en woonruimtes. Klassiek én modern.</p>
+        </div>
+        <div class="dienst-card">
+          <h3>Tegelzetwerk</h3>
+          <p>Professioneel leggen van tegels op elk ondergrond. Nauwkeurig en netjes afgewerkt.</p>
+        </div>
+        <div class="dienst-card">
+          <h3>Keukenrenovatie</h3>
+          <p>Nieuwe keukenachterwand, vloer of complete make-over. Wij verzorgen het geheel.</p>
+        </div>
+        <div class="dienst-card">
+          <h3>Terras &amp; Buitentegels</h3>
+          <p>Duurzame buitentegels voor tuin, terras en oprit. Slipbestendig en weerbestendig.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTEN -->
+  <section id="projecten" class="section projecten-section">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-eyebrow">Ons werk</p>
+        <h2 class="section-title">Recente Projecten</h2>
+        <p class="section-subtitle">Een greep uit onze uitgevoerde opdrachten</p>
+      </div>
+      <div class="projecten-grid">
+        <div class="project-card">
+          <img src="/Images/ModererneBadkamerRenovatie.jpg" alt="Moderne badkamer renovatie" />
+          <div class="project-overlay">
+            <span class="project-tag">Badkamerrenovatie</span>
+            <p>Moderne badkamer — Hengelo</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/VloertegelsWoonkamerVisgraat.jpg" alt="Vloertegels woonkamer" />
+          <div class="project-overlay">
+            <span class="project-tag">Vloertegels</span>
+            <p>Visgraat vloer — Enschede</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/BadkamerWandtegels.jpg" alt="Badkamer wandtegels" />
+          <div class="project-overlay">
+            <span class="project-tag">Wandtegels</span>
+            <p>Metro tegels badkamer — Almelo</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/KeukenAchterwand.jpg" alt="Keuken achterwand" />
+          <div class="project-overlay">
+            <span class="project-tag">Keuken</span>
+            <p>Mozaïek achterwand — Hengelo</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/LuxeBadkamer.jpg" alt="Luxe badkamer" />
+          <div class="project-overlay">
+            <span class="project-tag">Badkamerrenovatie</span>
+            <p>Spa badkamer — Haaksbergen</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/TerrasTegels.jpg" alt="Terras tegels" />
+          <div class="project-overlay">
+            <span class="project-tag">Buitentegels</span>
+            <p>Terras — Borne</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/InloopdouchLuxe.jpg" alt="Douche inloopdouche" />
+          <div class="project-overlay">
+            <span class="project-tag">Badkamerrenovatie</span>
+            <p>Inloopdouche — Oldenzaal</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/Images/badkamerTegels.jpg" alt="Badkamer tegels" />
+          <div class="project-overlay">
+            <span class="project-tag">Wandtegels</span>
+            <p>Terrazzo look — Hengelo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKWIJZE -->
+  <section class="ww-section">
+    <div class="ww-radial"></div>
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-eyebrow ww-eyebrow">Hoe wij werken</p>
+        <h2 class="section-title ww-heading">Onze Werkwijze</h2>
+      </div>
+      <p class="ww-intro">
+        Van eerste contact tot oplevering — een helder, transparant proces zonder verrassingen.
+      </p>
+
+      <!-- Progress indicator -->
+      <div class="ww-progress">
+        <div class="ww-track">
+          <div class="ww-fill" id="wwFill"></div>
+        </div>
+        <div class="ww-nodes">
+          <div class="ww-node ww-node--terracotta" id="node0">01</div>
+          <div class="ww-node ww-node--gold"       id="node1">02</div>
+          <div class="ww-node ww-node--terracotta" id="node2">03</div>
+          <div class="ww-node ww-node--gold"       id="node3">04</div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="ww-grid">
+
+        <!-- Stap 01 -->
+        <div class="ww-card ww-card--terracotta" data-ww>
+          <span class="ww-bg-num">01</span>
+          <div class="ww-card-top">
+            <div class="ww-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.12 6.12l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <span class="ww-num-label">Stap 01</span>
+          </div>
+          <h3 class="ww-card-title">Contact opnemen</h3>
+          <p class="ww-card-body">U neemt contact op via telefoon of WhatsApp. Wij reageren doorgaans binnen één werkdag en plannen een vrijblijvend kennismakingsgesprek in om uw wensen goed te begrijpen.</p>
+          <div class="ww-card-footer">
+            <span class="ww-footer-line"></span>
+            Bel of app ons — geen formulieren
+          </div>
+        </div>
+
+        <!-- Stap 02 -->
+        <div class="ww-card ww-card--gold" data-ww>
+          <span class="ww-bg-num">02</span>
+          <div class="ww-card-top">
+            <div class="ww-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <line x1="10" y1="9" x2="8" y2="9"/>
+              </svg>
+            </div>
+            <span class="ww-num-label">Stap 02</span>
+          </div>
+          <h3 class="ww-card-title">Offerte op maat</h3>
+          <p class="ww-card-body">Na het gesprek ontvangt u een gedetailleerde offerte zonder kleine lettertjes. Alle materialen, uren en werkzaamheden staan erin — zodat u precies weet waar u aan toe bent.</p>
+          <div class="ww-card-footer">
+            <span class="ww-footer-line"></span>
+            Transparant, eerlijk en vrijblijvend
+          </div>
+        </div>
+
+        <!-- Stap 03 -->
+        <div class="ww-card ww-card--terracotta" data-ww>
+          <span class="ww-bg-num">03</span>
+          <div class="ww-card-top">
+            <div class="ww-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <span class="ww-num-label">Stap 03</span>
+          </div>
+          <h3 class="ww-card-title">Vakkundige uitvoering</h3>
+          <p class="ww-card-body">Op de afgesproken datum staan wij voor u klaar. We werken netjes, houden u op de hoogte en laten uw woning verzorgd en schoon achter — precies zoals wij hem aangetroffen hebben.</p>
+          <div class="ww-card-footer">
+            <span class="ww-footer-line"></span>
+            Vakmanschap dat voor zich spreekt
+          </div>
+        </div>
+
+        <!-- Stap 04 -->
+        <div class="ww-card ww-card--gold" data-ww>
+          <span class="ww-bg-num">04</span>
+          <div class="ww-card-top">
+            <div class="ww-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <span class="ww-num-label">Stap 04</span>
+          </div>
+          <h3 class="ww-card-title">Zes maanden garantie</h3>
+          <p class="ww-card-body">Na afronding staat u er niet alleen voor. Mocht er binnen zes maanden iets niet naar wens zijn — hoe zeldzaam ook — dan komen wij kosteloos langs voor inspectie en oplossing.</p>
+          <div class="ww-card-footer">
+            <span class="ww-footer-line"></span>
+            Uw tevredenheid is onze verantwoordelijkheid
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container two-col contact-two-col">
+      <div class="contact-info">
+        <p class="section-eyebrow">Neem contact op</p>
+        <h2 class="section-title">Wij staan voor u klaar</h2>
+        <p class="section-body">Heeft u een vraag, wilt u een offerte aanvragen of wil u gewoon eens praten over de mogelijkheden? Neem gerust contact op.</p>
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <div>
+              <strong>Adres</strong>
+              <p>Tegelstraat 14, 7551 AB Hengelo</p>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div>
+              <strong>Telefoon</strong>
+              <p>074 – 123 45 67</p>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div>
+              <strong>E-mail</strong>
+              <p>info@tegelhandelhengelo.nl</p>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div>
+              <strong>Openingstijden</strong>
+              <p>Ma–Vr: 08:00–17:30</p>
+              <p>Za: 09:00–13:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper">
+        <form class="contact-form" onsubmit="return false;">
+          <h3>Offerte aanvragen</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Voornaam</label>
+              <input type="text" placeholder="Jan" />
+            </div>
+            <div class="form-group">
+              <label>Achternaam</label>
+              <input type="text" placeholder="de Boer" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mailadres</label>
+            <input type="email" placeholder="jan@voorbeeld.nl" />
+          </div>
+          <div class="form-group">
+            <label>Telefoonnummer</label>
+            <input type="tel" placeholder="06 – 12 34 56 78" />
+          </div>
+          <div class="form-group">
+            <label>Uw bericht</label>
+            <textarea rows="4" placeholder="Vertel ons meer over uw project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Verstuur aanvraag</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Tegelhandel <strong>Hengelo</strong></span>
+      </div>
+      <p class="footer-tagline">Vakmanschap in tegels &amp; badkamers — al meer dan 20 jaar</p>
+      <div class="footer-links">
+        <button onclick="scrollToSection('home')">Home</button>
+        <button onclick="scrollToSection('over-ons')">Over Ons</button>
+        <button onclick="scrollToSection('diensten')">Diensten</button>
+        <button onclick="scrollToSection('projecten')">Projecten</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+      </div>
+      <p class="footer-copy">© 2025 Tegelhandel Hengelo. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+</div><!-- /.site-wrapper -->
+
+<script>
+  // ---- Smooth scroll ----
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    // Close mobile menu if open
+    document.getElementById('mobileMenu').classList.remove('mobile-menu--open');
+    document.getElementById('burgerBtn').classList.remove('burger--open');
+  }
+
+  // ---- Burger menu ----
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('mobile-menu--open');
+    document.getElementById('burgerBtn').classList.toggle('burger--open');
+  }
+
+  // ---- Werkwijze scroll animations ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Animate cards with stagger
+        const cards = document.querySelectorAll('[data-ww]');
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('ww-visible'), i * 150);
+        });
+
+        // Animate progress line
+        setTimeout(() => {
+          document.getElementById('wwFill').classList.add('ww-line-grow');
+        }, 100);
+
+        // Animate nodes
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => {
+            document.getElementById('node' + i).classList.add('ww-node-pop');
+          }, 300 + i * 300);
+        }
+
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const wwSection = document.querySelector('.ww-section');
+  if (wwSection) observer.observe(wwSection);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tegelsamples Bestellen — Tegelhandel Hengelo</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    .shop-hero {
+      background: var(--th-secondary);
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+    .shop-hero .section-title {
+      color: var(--th-white);
+      margin-bottom: 16px;
+    }
+    .shop-hero .section-subtitle {
+      color: rgba(255,255,255,0.65);
+      margin: 0 auto;
+    }
+    .shop-hero .section-eyebrow {
+      color: var(--th-accent);
+    }
+
+    .shop-section {
+      background: var(--th-cream);
+      padding: 80px 0 100px;
+    }
+
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .sample-card {
+      background: var(--th-white);
+      border-radius: var(--th-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--th-shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sample-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--th-shadow-md);
+    }
+
+    .sample-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--th-cream-dark);
+    }
+
+    .sample-card-image-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--th-cream-dark) 0%, #e0d5c8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .sample-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sample-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+
+    .sample-badge--standard {
+      background: rgba(200, 112, 58, 0.12);
+      color: var(--th-primary);
+    }
+
+    .sample-badge--buiten {
+      background: rgba(44, 44, 44, 0.1);
+      color: var(--th-secondary);
+    }
+
+    .sample-badge--premium {
+      background: rgba(212, 169, 106, 0.2);
+      color: #8a6a2a;
+    }
+
+    .sample-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--th-secondary);
+      margin-bottom: 8px;
+    }
+
+    .sample-card-body p {
+      font-size: 0.9rem;
+      color: var(--th-text-mid);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .sample-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .sample-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--th-secondary);
+    }
+
+    .sample-price span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--th-text-light);
+      font-family: 'Inter', sans-serif;
+      margin-left: 4px;
+    }
+
+    .btn-order {
+      background: var(--th-primary);
+      color: var(--th-white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: var(--th-radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-order:hover {
+      background: var(--th-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-order:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .shop-info {
+      margin-top: 64px;
+      background: var(--th-cream-dark);
+      border-radius: var(--th-radius-lg);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .shop-info-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--th-secondary);
+      margin-bottom: 6px;
+    }
+
+    .shop-info-item p {
+      font-size: 0.88rem;
+      color: var(--th-text-mid);
+      line-height: 1.5;
+    }
+
+    .shop-info-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .error-msg {
+      color: #c0392b;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .samples-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .shop-info {
+        grid-template-columns: 1fr;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+      .shop-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        text-align: left;
+      }
+      .shop-info-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .samples-grid {
+        grid-template-columns: 1fr;
+      }
+      .shop-hero {
+        padding: 120px 0 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="site-wrapper">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Tegelhandel <strong>Hengelo</strong></span>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="index.html" style="color:rgba(255,255,255,0.82);font-size:0.9rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;">← Terug naar site</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- STATUS BANNER -->
+  <div id="statusBanner" style="display:none; position:fixed; top:70px; left:0; right:0; z-index:999; padding:16px 24px; text-align:center; font-weight:600; font-size:0.95rem;"></div>
+
+  <!-- HERO -->
+  <div class="shop-hero">
+    <div class="container">
+      <p class="section-eyebrow">Tegelshop</p>
+      <h1 class="section-title">Bestel uw tegelsamples</h1>
+      <p class="section-subtitle">Bekijk de kwaliteit thuis voordat u beslist. Betaal veilig via Stripe.</p>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section class="shop-section">
+    <div class="container">
+
+      <div class="samples-grid">
+
+        <!-- Vloertegels -->
+        <div class="sample-card">
+          <div class="sample-card-image-placeholder">🪨</div>
+          <div class="sample-card-body">
+            <span class="sample-badge sample-badge--standard">Standaard</span>
+            <h3>Vloertegel Sample</h3>
+            <p>Keramische vloertegel, 10×10 cm. Geschikt voor woonkamer, keuken en hal. Verkrijgbaar in meerdere kleuren.</p>
+            <div class="sample-card-footer">
+              <div class="sample-price">€2,50 <span>per stuk</span></div>
+              <button class="btn-order" onclick="startCheckout('vloertegel')">Bestellen</button>
+            </div>
+            <p class="error-msg" id="error-vloertegel">Er is iets misgegaan. Probeer opnieuw.</p>
+          </div>
+        </div>
+
+        <!-- Wandtegels -->
+        <div class="sample-card">
+          <div class="sample-card-image-placeholder">🧱</div>
+          <div class="sample-card-body">
+            <span class="sample-badge sample-badge--standard">Standaard</span>
+            <h3>Wandtegel Sample</h3>
+            <p>Metro of glanzende wandtegel, 7,5×15 cm. Ideaal voor badkamer en keuken. Strak en tijdloos design.</p>
+            <div class="sample-card-footer">
+              <div class="sample-price">€2,50 <span>per stuk</span></div>
+              <button class="btn-order" onclick="startCheckout('wandtegel')">Bestellen</button>
+            </div>
+            <p class="error-msg" id="error-wandtegel">Er is iets misgegaan. Probeer opnieuw.</p>
+          </div>
+        </div>
+
+        <!-- Mozaïek -->
+        <div class="sample-card">
+          <div class="sample-card-image-placeholder">🎨</div>
+          <div class="sample-card-body">
+            <span class="sample-badge sample-badge--standard">Standaard</span>
+            <h3>Mozaïek Sample</h3>
+            <p>Mozaïektegel op matje, 30×30 cm. Perfect als accentwand, in de douche of als achterwand in de keuken.</p>
+            <div class="sample-card-footer">
+              <div class="sample-price">€2,50 <span>per stuk</span></div>
+              <button class="btn-order" onclick="startCheckout('mozaiek')">Bestellen</button>
+            </div>
+            <p class="error-msg" id="error-mozaiek">Er is iets misgegaan. Probeer opnieuw.</p>
+          </div>
+        </div>
+
+        <!-- Buitentegels -->
+        <div class="sample-card">
+          <div class="sample-card-image-placeholder">🏡</div>
+          <div class="sample-card-body">
+            <span class="sample-badge sample-badge--buiten">Buiten</span>
+            <h3>Buitentegel Sample</h3>
+            <p>Dikke buitentegel 20×20 cm, slipbestendig en vorstbestendig. Geschikt voor terras, oprit en tuin.</p>
+            <div class="sample-card-footer">
+              <div class="sample-price">€3,50 <span>per stuk</span></div>
+              <button class="btn-order" onclick="startCheckout('buitentegel')">Bestellen</button>
+            </div>
+            <p class="error-msg" id="error-buitentegel">Er is iets misgegaan. Probeer opnieuw.</p>
+          </div>
+        </div>
+
+        <!-- Natuursteen -->
+        <div class="sample-card">
+          <div class="sample-card-image-placeholder">💎</div>
+          <div class="sample-card-body">
+            <span class="sample-badge sample-badge--premium">Premium</span>
+            <h3>Natuursteen Sample</h3>
+            <p>Echte natuursteen, 10×10 cm. Marmer, travertijn of leisteen. Uniek van structuur, tijdloos van uitstraling.</p>
+            <div class="sample-card-footer">
+              <div class="sample-price">€5,00 <span>per stuk</span></div>
+              <button class="btn-order" onclick="startCheckout('natuursteen')">Bestellen</button>
+            </div>
+            <p class="error-msg" id="error-natuursteen">Er is iets misgegaan. Probeer opnieuw.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info balk -->
+      <div class="shop-info">
+        <div class="shop-info-item">
+          <div class="shop-info-icon">🔒</div>
+          <div>
+            <strong>Veilig betalen</strong>
+            <p>Betaling verloopt via Stripe — de veiligste betaalmethode voor webshops.</p>
+          </div>
+        </div>
+        <div class="shop-info-item">
+          <div class="shop-info-icon">📦</div>
+          <div>
+            <strong>Gratis verzending</strong>
+            <p>Uw samples worden gratis thuisbezorgd binnen 2–3 werkdagen.</p>
+          </div>
+        </div>
+        <div class="shop-info-item">
+          <div class="shop-info-icon">💬</div>
+          <div>
+            <strong>Advies nodig?</strong>
+            <p>Bel ons op 074 – 123 45 67 en wij helpen u de juiste tegel te kiezen.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Tegelhandel <strong>Hengelo</strong></span>
+      </div>
+      <p class="footer-tagline">Vakmanschap in tegels &amp; badkamers — al meer dan 20 jaar</p>
+      <p class="footer-copy">© 2025 Tegelhandel Hengelo. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const stripe = Stripe("pk_test_51TAAAiLc89Q6vw6mgXV41WuF5JeUehoFV4oVqArFNzEnVFoac6vUZalvzPADh7961m6YsgNxCT2DoaAvhsfNQCSK00laHHBkDX");
+
+  // Toon statusmelding na betaling
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get("status");
+  const banner = document.getElementById("statusBanner");
+
+  if (status === "success") {
+    banner.style.display = "block";
+    banner.style.background = "#d4edda";
+    banner.style.color = "#1a5c2a";
+    banner.textContent = "✔ Bedankt voor uw bestelling! Uw sample wordt binnen 2–3 werkdagen bezorgd.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (status === "cancel") {
+    banner.style.display = "block";
+    banner.style.background = "#fdecea";
+    banner.style.color = "#7a1c1c";
+    banner.textContent = "✖ Betaling geannuleerd. U kunt het opnieuw proberen.";
+  }
+
+  async function startCheckout(product) {
+    const btn = event.currentTarget;
+    const errorEl = document.getElementById("error-" + product);
+
+    btn.disabled = true;
+    btn.textContent = "Laden...";
+    errorEl.style.display = "none";
+
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ product })
+      });
+
+      if (!response.ok) throw new Error("Fout bij aanmaken checkout sessie");
+
+      const session = await response.json();
+      const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+      if (result.error) throw new Error(result.error.message);
+
+    } catch (err) {
+      console.error(err);
+      errorEl.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Bestellen";
+    }
+  }
+</script>
+
+</body>
+</html>
